@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		/* Set gradient background color */
+		html,
+		body {
+			height: 100%;
+		}
+		body {
+			background: linear-gradient(to bottom right, #FFA500, #FFFF00);
+		}
+		/* Center the content */
+		.content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
+		h1 {
+			font-size: 3rem;
+			font-weight: bold;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<h1>Hi, <%=name%>></h1>lhfdajehkjafhiA
+		<a href="/logout" class="btn btn-primary">Logout</a>
+	</div>
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

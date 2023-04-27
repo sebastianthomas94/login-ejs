@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./index.css">
+
+	<style>
+		.error-message {
+			color: red;
+			font-size: small;
+			margin-top: 5px;
+			/* display: none; */
+		}
+		.form-control.is-invalid {
+			border-color: red;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card login-card">
+					<div class="card-body">
+						<h4 class="card-title">Login</h4>
+						<form action="/UserAuth" method="POST">
+							<div class="form-group">
+								<label for="username">Username</label>
+								<input type="text" class="form-control" id="username" name="username" placeholder="Enter username" <%if (user){%> value= "<%=user%>" <%}%> required>
+								<% if (!username) { %>
+								<small class="error-message" id="username-error">Invalid username</small>
+								<% } %>
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+								<% if (!password) { %>
+									<small class="error-message" id="password-error">Incorrect password</small>
+								  <% } %>
+								
+							</div>
+							<button type="submit" class="btn btn-primary btn-block">Login</button>
+							<small class="form-text text-muted"><a href="#">Forgot password?</a></small>
+							</div>
+						</form>
+						<!-- <hr class="my-1"> -->
+						<div class="text-center">
+							<span class="text-muted" style="padding-bottom: 10px;">or</span>
+							<a href="/register" class="btn btn-outline-primary btn-block mt-3">Register</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<!-- 	<script>
+		$("form").submit(function(event) {
+			event.preventDefault();
+			var username = $("#username").val();
+			var password = $("#password").val();
+			if (username !== "correct-username") {
+				$("#username").addClass("is-invalid");
+				$("#username-error").show();
+			} else if (password !== "correct-password") {
+				$("#password").addClass("is-invalid");
+				$("#password-error").show();
+			} else {
+				// login success, do something
+			}
+		});
+
+		$("#username, #password").keyup(function() {
+			$(this).removeClass("is-invalid");
+			$(this).next(".error-message").hide();
+		});
+	</script> -->
+</body>
+</html>

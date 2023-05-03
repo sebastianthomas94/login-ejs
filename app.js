@@ -72,22 +72,37 @@ app.post("/UserAuth",(req, res) =>{
 
 
     for(let i in userData)
-    if(userData[i].username == req.body.username && userData[i].password == req.body.password)
     {
-        req.session.auth= true;
-        console.log("cookie session id: ",req.session.id);
-        userPointer= i;
-        req.session.userPointer= userPointer;
-        res.redirect("/home");
-        console.log("logged in succesfully");
-        
-        console.log("from userAuth: ",req.session);
-        return;
+        if(userData[i].username == req.body.username && userData[i].password == req.body.password)
+        {
+            req.session.auth= true;
+            console.log("cookie session id: ",req.session.id);
+            userPointer= i;
+            req.session.userPointer= userPointer;
+            res.redirect("/home");
+            console.log("logged in succesfully");
+            
+            console.log("from userAuth: ",req.session);
+            return;
+        }
+        else if(userData[i].username == req.body.username)
+        {
+            req.session.userPointer= i;
+            console.log("inside ",req.session.userPointer);
+        }
+
     }
 
     console.log("User Not Found or invalid entry");
-    authData.username= userData[0].username == req.body.username;
-    authData.password= userData[0].password == req.body.password && authData.username;
+    if(req.session.userPointer)
+    {
+        authData.username= userData[req.session.userPointer].username == req.body.username;
+        authData.password= userData[req.session.userPointer].password == req.body.password && authData.username;
+    }
+    else{
+        authData.username= false;
+        authData.password= false;
+    }
     console.log("username :",authData.username);
     console.log("password :", authData.password);
     if (authData.username)
